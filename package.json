@@ -1,0 +1,11 @@
+{
+  "name": "small-circle",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node tests/test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
