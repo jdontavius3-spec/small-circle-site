@@ -81,9 +81,10 @@
         input.value = '';
         await refresh();
       }, 9600);
-       } catch {
-         message.textContent = 'try again.';
-       } finally {      submitButton.disabled = false;
+    } catch {
+      message.textContent = 'try again.';
+    } finally {
+      submitButton.disabled = false;
     }
   });
 
