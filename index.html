@@ -20,13 +20,56 @@
     <button id="lock-button" class="lock-button" type="button" hidden>LOCK</button>
     <footer class="footer">© 2026</footer>
   </main>
-  <div id="transition" class="transition" hidden>
-  <div class="t-stack">
-    <span class="t-word" data-w="1">THIS</span>
-    <span class="t-word" data-w="2">WON’T</span>
-    <span class="t-word" data-w="3">GO</span>
-    <span class="t-word" data-w="4">VIRAL.</span>
-  </div>
+  .transition {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  animation: t-overlay 9.6s ease forwards;
+}
+
+.t-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.t-word {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: clamp(3rem, 16vw, 9rem);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+}
+
+.t-word[data-w="1"] { animation: t-flash 2.4s ease-in-out forwards 0.0s; }
+.t-word[data-w="2"] { animation: t-flash 2.4s ease-in-out forwards 2.4s; }
+.t-word[data-w="3"] { animation: t-flash 2.4s ease-in-out forwards 4.8s; }
+.t-word[data-w="4"] { animation: t-flash 2.4s ease-in-out forwards 7.2s; }
+
+/* slow, soft fade in, longer hold, soft fade out */
+@keyframes t-flash {
+  0%   { opacity: 0; }
+  25%  { opacity: 1; }   /* gentle fade in */
+  65%  { opacity: 1; }   /* long hold */
+  100% { opacity: 0; }   /* gentle fade out */
+}
+
+@keyframes t-overlay {
+  0%   { opacity: 0; }
+  2%   { opacity: 1; }
+  96%  { opacity: 1; }
+  100% { opacity: 0; }
+}
   <script src="/assets/site.js"></script>
 </body>
 </html>
