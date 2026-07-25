@@ -161,15 +161,21 @@ button, a { -webkit-tap-highlight-color: transparent; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 0 2vw;
 }
 
 .word {
-  font-weight: 900;
-  font-size: clamp(4rem, 22vw, 13rem);
+  font-family: 'Anton', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 24vw;
+  line-height: 0.85;
   color: #fff;
   text-align: center;
   opacity: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  width: 100%;
+  text-transform: uppercase;
 }
 
 .w1 { animation: t-flash 2.4s ease-in-out forwards 0.0s; }
@@ -179,7 +185,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @keyframes t-flash {
   0%   { opacity: 0; }
-  25%  { opacity: 1; }
-  65%  { opacity: 1; }
+  20%  { opacity: 1; }
+  55%  { opacity: 1; }
+  62%  { opacity: 0.15; }
+  68%  { opacity: 1; }
+  76%  { opacity: 0.15; }
+  82%  { opacity: 1; }
+  92%  { opacity: 0; }
   100% { opacity: 0; }
 }
