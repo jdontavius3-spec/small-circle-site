@@ -80,7 +80,7 @@
         transition.hidden = true;
         input.value = '';
         await refresh();
-      }, 9600);
+      }, 21500);
     } catch {
       message.textContent = 'try again.';
     } finally {
