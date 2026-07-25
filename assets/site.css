@@ -178,18 +178,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-transform: uppercase;
 }
 
-.w1 { animation: t-flash 2.4s ease-in-out forwards 0.0s; }
-.w2 { animation: t-flash 2.4s ease-in-out forwards 2.4s; }
-.w3 { animation: t-flash 2.4s ease-in-out forwards 4.8s; }
-.w4 { animation: t-flash 2.4s ease-in-out forwards 7.2s; }
+.w1 { animation: t-flash 5s ease-in-out forwards 1.5s; }
+.w2 { animation: t-flash 5s ease-in-out forwards 6.5s; }
+.w3 { animation: t-flash 5s ease-in-out forwards 11.5s; }
+.w4 { animation: t-flash 5s ease-in-out forwards 16.5s; }
 
 @keyframes t-flash {
-  0%   { opacity: 1; }
-  35%  { opacity: 1; }
-  45%  { opacity: 0.15; }
-  55%  { opacity: 1; }
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  30%  { opacity: 1; }
+  40%  { opacity: 0.15; }
   70%  { opacity: 0.15; }
-  85%  { opacity: 1; }
-  95%  { opacity: 0; }
+  80%  { opacity: 1; }
+  90%  { opacity: 1; }
   100% { opacity: 0; }
 }
