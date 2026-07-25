@@ -184,8 +184,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .w4 { animation: t-flash 2.4s ease-in-out forwards 7.2s; }
 
 @keyframes t-flash {
-  0%   { opacity: 0; }
-  20%  { opacity: 1; }
+  0%   { opacity: 1; }
   55%  { opacity: 1; }
   62%  { opacity: 0.15; }
   68%  { opacity: 1; }
