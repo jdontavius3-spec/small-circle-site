@@ -164,11 +164,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .word {
-  font-weight: 800;
-  font-size: clamp(3rem, 16vw, 9rem);
+  font-weight: 900;
+  font-size: clamp(4rem, 22vw, 13rem);
   color: #fff;
   text-align: center;
   opacity: 0;
+  letter-spacing: -0.02em;
 }
 
 .w1 { animation: t-flash 2.4s ease-in-out forwards 0.0s; }
