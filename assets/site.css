@@ -185,11 +185,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @keyframes t-flash {
   0%   { opacity: 1; }
+  35%  { opacity: 1; }
+  45%  { opacity: 0.15; }
   55%  { opacity: 1; }
-  62%  { opacity: 0.15; }
-  68%  { opacity: 1; }
-  76%  { opacity: 0.15; }
-  82%  { opacity: 1; }
-  92%  { opacity: 0; }
+  70%  { opacity: 0.15; }
+  85%  { opacity: 1; }
+  95%  { opacity: 0; }
   100% { opacity: 0; }
 }
