@@ -76,12 +76,16 @@
         return;
       }
       transition.hidden = false;
+      transition.classList.remove('hold');
+      window.setTimeout(() => {
+        transition.classList.add('hold');
+      }, 1300);
       window.setTimeout(async () => {
         transition.hidden = true;
+        transition.classList.remove('hold');
         input.value = '';
         await refresh();
-      }, 1750);
-    } catch {
+      }, 2700);    } catch {
       message.textContent = 'try again.';
     } finally {
       submitButton.disabled = false;
