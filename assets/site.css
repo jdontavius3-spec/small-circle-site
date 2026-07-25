@@ -103,25 +103,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   letter-spacing: .18em;
 }
 
-.transition {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background: var(--black);
-  color: var(--white);
-  font-size: clamp(24px, 6vw, 52px);
-  text-align: center;
-  animation: reveal 1.75s ease forwards;
-}
-@keyframes reveal {
-  0% { opacity: 0; }
-  12%, 72% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
 .section {
   width: min(100%, 900px);
   min-height: 100dvh;
@@ -159,56 +140,45 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
 .transition {
   position: fixed;
   inset: 0;
   background: #000;
+  z-index: 999;
+}
+
+.stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mask {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
-  opacity: 0;
-  animation: t-overlay 2.7s ease forwards;
+  overflow: hidden;
 }
 
-.t-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 0.95;
-}
-
-.t-word {
+.word {
   font-weight: 800;
-  font-size: clamp(2.5rem, 10vw, 5.5rem);
-  color: rgba(255,255,255,0.35);
+  font-size: clamp(3rem, 16vw, 9rem);
+  color: #fff;
+  text-align: center;
   opacity: 0;
-  transform: translateY(20px);
-  transition: color 0.3s ease;
 }
 
-.t-word[data-w="1"] { animation: t-word-in 0.3s ease forwards 0.1s, t-dim 0.3s ease forwards 0.7s; }
-.t-word[data-w="2"] { animation: t-word-in 0.3s ease forwards 0.4s, t-dim 0.3s ease forwards 1.0s; }
-.t-word[data-w="3"] { animation: t-word-in 0.3s ease forwards 0.7s, t-dim 0.3s ease forwards 1.3s; }
-.t-word[data-w="4"] { animation: t-word-in 0.3s ease forwards 1.0s; }
+.w1 { animation: t-flash 2.4s ease-in-out forwards 0.0s; }
+.w2 { animation: t-flash 2.4s ease-in-out forwards 2.4s; }
+.w3 { animation: t-flash 2.4s ease-in-out forwards 4.8s; }
+.w4 { animation: t-flash 2.4s ease-in-out forwards 7.2s; }
 
-/* All words brighten together at the hold stage */
-.t-word { animation-fill-mode: forwards; }
-.t-stack .t-word { }
-.transition.hold .t-word { color: #fff; }
-
-@keyframes t-word-in {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes t-dim {
-  to { color: rgba(255,255,255,0.35); }
-}
-
-@keyframes t-overlay {
+@keyframes t-flash {
   0%   { opacity: 0; }
-  4%   { opacity: 1; }
-  85%  { opacity: 1; }
-  96%  { opacity: 0; }
+  25%  { opacity: 1; }
+  65%  { opacity: 1; }
   100% { opacity: 0; }
 }
