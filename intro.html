@@ -23,7 +23,6 @@
     align-items: center;
     justify-content: center;
   }
-
   .countdown {
     position: absolute;
     inset: 0;
@@ -42,19 +41,85 @@
   .c7 { animation: count-in 1.8s ease-in-out forwards 0s; }
   .c6 { animation: count-in 1.8s ease-in-out forwards 1.8s; }
   .c5 { animation: count-in 1.8s ease-in-out forwards 3.6s; }
-
   @keyframes count-in {
     0%   { opacity: 0; transform: scale(0.8); }
     35%  { opacity: 1; transform: scale(1); }
     65%  { opacity: 1; transform: scale(1); }
     100% { opacity: 0; transform: scale(1.1); }
   }
-
   .room-glow {
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse 60% 45% at 50% 40%, rgba(201,151,23,0.22) 0%, rgba(0,0,0,0) 70%);
     opacity: 0;
-    animation:
-      reveal-in 1s ease-in forwards 6.4s,
-      bulb-flicker 6.5s
+    animation: reveal-in 1s ease-in forwards 6.4s, bulb-flicker 6.5s ease-in-out infinite 7.4s;
+  }
+  .logo-stack {
+    position: relative;
+    width: min(92vw, 92vh);
+    opacity: 0;
+    animation: reveal-in 1s ease-in forwards 6.4s;
+  }
+  .logo-base {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    animation: logo-lit 6.5s ease-in-out infinite 7.4s;
+  }
+  .halo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 14px rgba(255,214,110,0.9)) drop-shadow(0 0 34px rgba(201,151,23,0.6));
+    animation: bulb-flicker 6.5s ease-in-out infinite 7.4s;
+  }
+  @keyframes reveal-in { to { opacity: 1; } }
+  @keyframes bulb-flicker {
+    0%   { opacity: 1;    }
+    10%  { opacity: 0.55; }
+    20%  { opacity: 1;    }
+    32%  { opacity: 0.4;  }
+    46%  { opacity: 1;    }
+    60%  { opacity: 0.6;  }
+    72%  { opacity: 1;    }
+    86%  { opacity: 0.5;  }
+    100% { opacity: 1;    }
+  }
+  @keyframes logo-lit {
+    0%   { opacity: 0.85; }
+    10%  { opacity: 0.65; }
+    20%  { opacity: 0.85; }
+    32%  { opacity: 0.55; }
+    46%  { opacity: 0.85; }
+    60%  { opacity: 0.68; }
+    72%  { opacity: 0.85; }
+    86%  { opacity: 0.6;  }
+    100% { opacity: 0.85; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; opacity: 1 !important; }
+  }
+</style>
+</head>
+<body>
+<div class="intro">
+<div class="countdown">
+<span class="count c7">7</span>
+<span class="count c6">6</span>
+<span class="count c5">5</span>
+</div>
+<div class="room-glow"></div>
+<div class="logo-stack">
+<img class="logo-base" src="/assets/logo-no-halo.png" alt="Small Circle">
+<img class="halo" src="/assets/halo.png" alt="">
+</div>
+</div>
+<script>
+window.setTimeout(() => { window.location.href = '/index.html'; }, 14000);
+</script>
+</body>
+</html>
