@@ -32,27 +32,18 @@
   .ring.r2 { animation-delay: 1.2s; }
   .ring.r3 { animation-delay: 2.4s; }
   .logo {
-     position: relative;
-     width: min(70vw, 70vh);
-     height: auto;
-     z-index: 1;
-     mix-blend-mode: multiply;
-     animation: logo-glow 7.2s ease-in-out forwards;
-   }
-  @keyframes ring-ping {
+  position: relative;
+  width: min(70vw, 70vh);
+  height: auto;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}  
+ @keyframes ring-ping {
     0%   { transform: scale(0.9); opacity: 0; }
     15%  { opacity: 0.9; }
     100% { transform: scale(1.5); opacity: 0; }
   }
-  @keyframes logo-glow {
-    0%   { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
-    15%  { filter: drop-shadow(0 0 24px rgba(201,151,23,0.7)); }
-    30%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
-    45%  { filter: drop-shadow(0 0 24px rgba(201,151,23,0.7)); }
-    60%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
-    75%  { filter: drop-shadow(0 0 24px rgba(201,151,23,0.7)); }
-    100% { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
-  }
+  
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .01ms !important; }
     .ring { display: none; }
