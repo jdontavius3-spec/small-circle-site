@@ -32,12 +32,13 @@
   .ring.r2 { animation-delay: 1.2s; }
   .ring.r3 { animation-delay: 2.4s; }
   .logo {
-    position: relative;
-    width: min(70vw, 70vh);
-    height: auto;
-    z-index: 1;
-    animation: logo-glow 7.2s ease-in-out forwards;
-  }
+     position: relative;
+     width: min(70vw, 70vh);
+     height: auto;
+     z-index: 1;
+     mix-blend-mode: multiply;
+     animation: logo-glow 7.2s ease-in-out forwards;
+   }
   @keyframes ring-ping {
     0%   { transform: scale(0.9); opacity: 0; }
     15%  { opacity: 0.9; }
