@@ -10,66 +10,115 @@
   html, body {
     margin: 0;
     height: 100%;
-    background: #0a0a0a;
+    background: #060606;
     overflow: hidden;
   }
   .intro {
     position: relative;
     height: 100dvh;
-    overflow: hidden;
-  }
-  .spotlight,
-  .logo-mask {
-    position: absolute;
-    inset: 0;
-    background-repeat: no-repeat;
-    background-size: 62vmax 62vmax;
-    animation: light-move 10s cubic-bezier(.45,.05,.55,.95) forwards;
-  }
-  .spotlight {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.25) 40%, rgba(255,255,255,0) 68%);
-    mix-blend-mode: screen;
-  }
-  .logo-mask {
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: 62vmax 62vmax;
-    mask-size: 62vmax 62vmax;
-    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 68%);
-    mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 68%);
   }
-  .logo {
-    width: min(70vw, 70vh);
+
+  /* Ambient dim room glow, flickers with the bulb */
+  .room-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 45% at 50% 40%, rgba(255,244,214,0.16) 0%, rgba(0,0,0,0) 70%);
+    animation: bulb-flicker 5.5s ease-in-out infinite;
+  }
+
+  /* The hanging cord + bulb, swaying */
+  .fixture {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: top center;
+    animation: sway 4.2s ease-in-out infinite;
+  }
+  .cord {
+    width: 2px;
+    height: 9vh;
+    background: #1c1c1c;
+    margin: 0 auto;
+  }
+  .bulb {
+    width: 16px;
+    height: 22px;
+    margin: -2px auto 0;
+    border-radius: 50% 50% 45% 45%;
+    background: radial-gradient(circle at 50% 40%, #fff6d8 0%, #d8b866 70%, #7a6532 100%);
+    box-shadow: 0 0 18px 6px rgba(255,236,180,0.55);
+    animation: bulb-flicker 5.5s ease-in-out infinite;
+  }
+
+  .logo-stack {
+    position: relative;
+    width: min(58vw, 58vh);
+    filter: brightness(0.9);
+    animation: bulb-flicker 5.5s ease-in-out infinite;
+  }
+  .logo-base {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+  }
+  .halo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
     height: auto;
   }
-  @keyframes light-move {
-    0%   { background-position: -60% -35%; -webkit-mask-position: -60% -35%; mask-position: -60% -35%; }
-    18%  { background-position: 130% -20%; -webkit-mask-position: 130% -20%; mask-position: 130% -20%; }
-    36%  { background-position: -50% 110%; -webkit-mask-position: -50% 110%; mask-position: -50% 110%; }
-    54%  { background-position: 110% 90%; -webkit-mask-position: 110% 90%; mask-position: 110% 90%; }
-    70%  { background-position: 10% -15%; -webkit-mask-position: 10% -15%; mask-position: 10% -15%; }
-    86%  { background-position: 60% 65%; -webkit-mask-position: 60% 65%; mask-position: 60% 65%; }
-    100% { background-position: 50% 50%; -webkit-mask-position: 50% 50%; mask-position: 50% 50%; }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-2.5deg); }
+    50%      { transform: rotate(2.5deg); }
   }
+
+  /* Dying-bulb flicker: irregular dips, not a clean sine wave */
+  @keyframes bulb-flicker {
+    0%   { opacity: 1;   }
+    4%   { opacity: 0.3; }
+    8%   { opacity: 1;   }
+    11%  { opacity: 0.15;}
+    15%  { opacity: 0.9; }
+    19%  { opacity: 0.5; }
+    24%  { opacity: 1;   }
+    40%  { opacity: 1;   }
+    44%  { opacity: 0.2; }
+    48%  { opacity: 0.85;}
+    52%  { opacity: 1;   }
+    75%  { opacity: 1;   }
+    78%  { opacity: 0.35;}
+    82%  { opacity: 1;   }
+    100% { opacity: 1;   }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: .01ms !important; }
+    *, *::before, *::after { animation: none !important; }
   }
 </style>
 </head>
 <body>
 <div class="intro">
-  <div class="spotlight"></div>
-  <div class="logo-mask">
-    <img class="logo" src="/assets/logo.png" alt="Small Circle">
+  <div class="room-glow"></div>
+  <div class="fixture">
+    <div class="cord"></div>
+    <div class="bulb"></div>
+  </div>
+  <div class="logo-stack">
+    <img class="logo-base" src="/assets/logo-no-halo.png" alt="Small Circle">
+    <img class="halo" src="/assets/halo.png" alt="">
   </div>
 </div>
 <script>
   window.setTimeout(() => {
     window.location.href = '/index.html';
-  }, 10500);
+  }, 6500);
 </script>
 </body>
 </html>
