@@ -30,6 +30,23 @@
     align-items: center;
     justify-content: center;
   }
+  .count-glow {
+    position: absolute;
+    width: 55vmin;
+    height: 55vmin;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,151,23,0.28) 0%, rgba(201,151,23,0) 70%);
+    opacity: 0;
+  }
+  .g7 { animation: glow-in 1.8s ease-in-out forwards 0s; }
+  .g6 { animation: glow-in 1.8s ease-in-out forwards 1.8s; }
+  .g5 { animation: glow-in 1.8s ease-in-out forwards 3.6s; }
+  @keyframes glow-in {
+    0%   { opacity: 0; }
+    35%  { opacity: 1; }
+    65%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
   .count {
     position: absolute;
     font-family: 'Caveat', cursive;
@@ -108,8 +125,11 @@
 <body>
 <div class="intro">
 <div class="countdown">
+<div class="count-glow g7"></div>
 <span class="count c7">7</span>
+<div class="count-glow g6"></div>
 <span class="count c6">6</span>
+<div class="count-glow g5"></div>
 <span class="count c5">5</span>
 </div>
 <div class="room-glow"></div>
