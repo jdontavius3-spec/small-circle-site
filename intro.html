@@ -24,7 +24,7 @@
     justify-content: center;
   }
 
-  /* Countdown numbers */
+  /* Countdown numbers — each now holds longer */
   .countdown {
     position: absolute;
     inset: 0;
@@ -40,32 +40,32 @@
     color: #fff;
     opacity: 0;
   }
-  .c7 { animation: count-in 1s ease-in-out forwards 0s; }
-  .c6 { animation: count-in 1s ease-in-out forwards 1s; }
-  .c5 { animation: count-in 1s ease-in-out forwards 2s; }
+  .c7 { animation: count-in 1.8s ease-in-out forwards 0s; }
+  .c6 { animation: count-in 1.8s ease-in-out forwards 1.8s; }
+  .c5 { animation: count-in 1.8s ease-in-out forwards 3.6s; }
 
   @keyframes count-in {
     0%   { opacity: 0; transform: scale(0.85); }
-    15%  { opacity: 1; transform: scale(1); }
-    80%  { opacity: 1; transform: scale(1); }
+    18%  { opacity: 1; transform: scale(1); }
+    82%  { opacity: 1; transform: scale(1); }
     100% { opacity: 0; transform: scale(1.05); }
   }
 
-  /* Logo reveal, fades in after the countdown finishes at 3s */
+  /* Logo reveal — fades in after countdown ends at 5.4s, with an extra held black pause first */
   .room-glow {
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse 60% 45% at 50% 40%, rgba(201,151,23,0.22) 0%, rgba(0,0,0,0) 70%);
     opacity: 0;
     animation:
-      reveal-in 0.6s ease-in forwards 3s,
-      bulb-flicker 6.5s ease-in-out infinite 3.6s;
+      reveal-in 1s ease-in forwards 6.4s,
+      bulb-flicker 6.5s ease-in-out infinite 7.4s;
   }
   .logo-stack {
     position: relative;
     width: min(92vw, 92vh);
     opacity: 0;
-    animation: reveal-in 0.6s ease-in forwards 3s;
+    animation: reveal-in 1s ease-in forwards 6.4s;
   }
   .logo-base {
     position: relative;
@@ -74,7 +74,7 @@
     display: block;
     filter: brightness(0) invert(1);
     opacity: 0.85;
-    animation: logo-lit 6.5s ease-in-out infinite 3.6s;
+    animation: logo-lit 6.5s ease-in-out infinite 7.4s;
   }
   .halo {
     position: absolute;
@@ -82,7 +82,7 @@
     width: 100%;
     height: auto;
     filter: drop-shadow(0 0 14px rgba(255,214,110,0.9)) drop-shadow(0 0 34px rgba(201,151,23,0.6));
-    animation: bulb-flicker 6.5s ease-in-out infinite 3.6s;
+    animation: bulb-flicker 6.5s ease-in-out infinite 7.4s;
   }
 
   @keyframes reveal-in {
@@ -133,7 +133,7 @@
 <script>
   window.setTimeout(() => {
     window.location.href = '/index.html';
-  }, 10500);
+  }, 14000);
 </script>
 </body>
 </html>
