@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>SMALL CIRCLE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #ffffff;
+  }
+  .intro {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+  .logo {
+    width: clamp(90px, 22vw, 160px);
+    height: auto;
+    animation: halo-pulse 3.6s ease-in-out forwards;
+  }
+  .tagline {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #737373;
+    opacity: 0;
+    animation: tagline-in 0.8s ease forwards 0.4s;
+  }
+  @keyframes halo-pulse {
+    0%   { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
+    10%  { filter: drop-shadow(0 0 18px rgba(201,151,23,0.9)); }
+    22%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
+    34%  { filter: drop-shadow(0 0 18px rgba(201,151,23,0.9)); }
+    46%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
+    58%  { filter: drop-shadow(0 0 18px rgba(201,151,23,0.9)); }
+    75%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
+    100% { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
+  }
+  @keyframes tagline-in {
+    to { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="intro">
+  <img class="logo" src="/assets/logo.png" alt="Small Circle">
+  <div class="tagline">only for a few.</div>
+</div>
+<script>
+  window.setTimeout(() => {
+    window.location.href = '/index.html';
+  }, 4200);
+</script>
+</body>
+</html>
