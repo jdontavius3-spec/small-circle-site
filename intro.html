@@ -55,6 +55,7 @@
     line-height: 1;
     color: #fff;
     opacity: 0;
+    filter: url(#grain);
   }
   .c7 { animation: count-in 1.8s ease-in-out forwards 0s; }
   .c6 { animation: count-in 1.8s ease-in-out forwards 1.8s; }
@@ -124,6 +125,12 @@
 </style>
 </head>
 <body>
+<svg style="position:absolute; width:0; height:0;">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3"/>
+  </filter>
+</svg>
 <div class="intro">
 <div class="countdown">
 <div class="count-glow g7"></div>
