@@ -1,18 +1,60 @@
-.count {
-  position: absolute;
-  font-family: 'Caveat', cursive;
-  font-weight: 700;
-  font-size: clamp(9rem, 42vw, 22rem);
-  color: #fff;
-  opacity: 0;
-}
-.c7 { animation: count-in 1.8s ease-in-out forwards 0s; }
-.c6 { animation: count-in 1.8s ease-in-out forwards 1.8s; }
-.c5 { animation: count-in 1.8s ease-in-out forwards 3.6s; }
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>SMALL CIRCLE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #060606;
+    overflow: hidden;
+  }
+  .intro {
+    position: relative;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-@keyframes count-in {
-  0%   { opacity: 0;   transform: scale(0.8); }
-  35%  { opacity: 1;   transform: scale(1); }
-  65%  { opacity: 1;   transform: scale(1); }
-  100% { opacity: 0;   transform: scale(1.1); }
-}
+  .countdown {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .count {
+    position: absolute;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(9rem, 42vw, 22rem);
+    color: #fff;
+    opacity: 0;
+  }
+  .c7 { animation: count-in 1.8s ease-in-out forwards 0s; }
+  .c6 { animation: count-in 1.8s ease-in-out forwards 1.8s; }
+  .c5 { animation: count-in 1.8s ease-in-out forwards 3.6s; }
+
+  @keyframes count-in {
+    0%   { opacity: 0; transform: scale(0.8); }
+    35%  { opacity: 1; transform: scale(1); }
+    65%  { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.1); }
+  }
+
+  .room-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 45% at 50% 40%, rgba(201,151,23,0.22) 0%, rgba(0,0,0,0) 70%);
+    opacity: 0;
+    animation:
+      reveal-in 1s ease-in forwards 6.4s,
+      bulb-flicker 6.5s
