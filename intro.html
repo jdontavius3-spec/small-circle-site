@@ -11,33 +11,58 @@
     margin: 0;
     height: 100%;
     background: #ffffff;
+    overflow: hidden;
   }
   .intro {
     height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
+  .ring {
+    position: absolute;
+    width: min(70vw, 70vh);
+    height: min(70vw, 70vh);
+    border-radius: 50%;
+    border: 2px solid rgba(201,151,23,0.8);
+    opacity: 0;
+    animation: ring-ping 3.6s ease-out infinite;
+  }
+  .ring.r2 { animation-delay: 1.2s; }
+  .ring.r3 { animation-delay: 2.4s; }
   .logo {
+    position: relative;
     width: min(70vw, 70vh);
     height: auto;
-    animation: halo-pulse 7.2s ease-in-out forwards;
+    z-index: 1;
+    animation: logo-glow 7.2s ease-in-out forwards;
   }
-  @keyframes halo-pulse {
+  @keyframes ring-ping {
+    0%   { transform: scale(0.9); opacity: 0; }
+    15%  { opacity: 0.9; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+  @keyframes logo-glow {
     0%   { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
-    20%  { filter: drop-shadow(0 0 30px rgba(201,151,23,0.9)); }
-    44%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
-    68%  { filter: drop-shadow(0 0 30px rgba(201,151,23,0.9)); }
-    88%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
+    15%  { filter: drop-shadow(0 0 24px rgba(201,151,23,0.7)); }
+    30%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
+    45%  { filter: drop-shadow(0 0 24px rgba(201,151,23,0.7)); }
+    60%  { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
+    75%  { filter: drop-shadow(0 0 24px rgba(201,151,23,0.7)); }
     100% { filter: drop-shadow(0 0 0px rgba(201,151,23,0)); }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .01ms !important; }
+    .ring { display: none; }
   }
 </style>
 </head>
 <body>
 <div class="intro">
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
   <img class="logo" src="/assets/logo.png" alt="Small Circle">
 </div>
 <script>
