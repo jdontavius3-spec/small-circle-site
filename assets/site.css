@@ -178,18 +178,28 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-transform: uppercase;
 }
 
-.w1 { animation: t-flash 5s ease-in-out forwards 1.5s; }
-.w2 { animation: t-flash 5s ease-in-out forwards 6.5s; }
-.w3 { animation: t-flash 5s ease-in-out forwards 11.5s; }
-.w4 { animation: t-flash 5s ease-in-out forwards 16.5s; }
+.w1 { animation: t-flash 2s ease-in-out forwards .25s; }
+.w2 { animation: t-flash 2s ease-in-out forwards 2.25s; }
+.w3 { animation: t-flash 2s ease-in-out forwards 4.25s; }
+.w4 { animation: t-flash 2s ease-in-out forwards 6.25s; }
+
+.skip-transition {
+  position: absolute;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 2;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, .58);
+  cursor: pointer;
+  font-size: 10px;
+  letter-spacing: .18em;
+}
 
 @keyframes t-flash {
-  0%   { opacity: 0; }
-  8%   { opacity: 1; }
-  30%  { opacity: 1; }
-  40%  { opacity: 0.15; }
-  70%  { opacity: 0.15; }
-  80%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { opacity: 0; }
+  0%   { opacity: 0; transform: scale(.985); }
+  18%  { opacity: 1; transform: scale(1); }
+  64%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.015); }
 }

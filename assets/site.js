@@ -5,7 +5,9 @@
   const message = document.querySelector('#message');
   const lockButton = document.querySelector('#lock-button');
   const transition = document.querySelector('#transition');
+  const skipTransition = document.querySelector('#skip-transition');
   const submitButton = form ? form.querySelector('button') : null;
+  let transitionTimer;
 
   const publicRows = [
     ['001', '/001/'],
@@ -32,6 +34,13 @@
     renderRows(unlocked);
     form.hidden = unlocked;
     lockButton.hidden = !unlocked;
+  }
+
+  async function finishTransition() {
+    window.clearTimeout(transitionTimer);
+    transition.hidden = true;
+    input.value = '';
+    await refresh();
   }
 
   async function getSession() {
@@ -76,11 +85,7 @@
         return;
       }
       transition.hidden = false;
-      window.setTimeout(async () => {
-        transition.hidden = true;
-        input.value = '';
-        await refresh();
-      }, 21500);
+      transitionTimer = window.setTimeout(finishTransition, 8500);
     } catch {
       message.textContent = 'try again.';
     } finally {
@@ -96,5 +101,12 @@
     }
   });
 
+  skipTransition.addEventListener('click', finishTransition);
+
   refresh();
+
+  if (new URLSearchParams(window.location.search).get('preview') === 'transition') {
+    transition.hidden = false;
+    transitionTimer = window.setTimeout(finishTransition, 8500);
+  }
 })();
